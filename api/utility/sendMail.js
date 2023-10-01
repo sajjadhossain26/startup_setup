@@ -1,9 +1,5 @@
 import nodemailer from 'nodemailer'
 
-
-
-
-
 /**
  * Send account activation
  */
@@ -16,14 +12,14 @@ let transport = nodemailer.createTransport({
     port: process.env.MAIL_PORT,
     auth:{
        user: process.env.MAIL_ID,
-       pass: process.env.MAIL_PASS
+       pass: process.env.MAIL_PASS,
     }
 })
 
 // send activation mail
 try {
     await transport.sendMail({
-        from: `<Facebook uae ${process.env.MAIL_ID}>`,
+        from: `Facebook uae <${process.env.MAIL_ID}>`,
         subject: "Account activation",
         to: to,
         text: data.name,
@@ -32,6 +28,6 @@ try {
         `,
     })
 } catch (error) {
-    next(error)
+   console.log(error);
 }
 }

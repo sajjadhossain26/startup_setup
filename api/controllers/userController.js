@@ -95,7 +95,7 @@ export const register =async (req, res, next) => {
         token: token
       })
     }
-  } catch (error) {asdfas
+  } catch (error) {
      next(error)
   }
 }
