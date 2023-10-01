@@ -83,10 +83,11 @@ export const register =async (req, res, next) => {
 
     if(user){
     const token = createToken ({id: user._id}, '365d')
+    const activationToken = createToken({id: user._id}, '30d')
  
     sendActivationLink(user.email, {
-      name: user.name,
-      link:''
+      name: user.first_name,
+      link:`${process.env.APP_URL +':'+ process.env.PORT }/activate/${activationToken}`
     })
     
       res.status(200).json({

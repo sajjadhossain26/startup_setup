@@ -8,6 +8,7 @@ const router = express.Router();
 router.post('/login', login);
 router.post('/register', register);
 router.get('/me', loggedInUser);
+router.get('/activate/:token', loggedInUser);
 
 
 export default router
